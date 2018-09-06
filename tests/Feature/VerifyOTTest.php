@@ -20,12 +20,12 @@ class VerifyOTTest extends TestCase
 
     public  function  a_user_can_submit_otp_and_Get_verified()
     {
-        $this->withExceptionHandling();
-        $OTP = rand(100000, 999999);
-        Cache::put(['OTP'=> $OTP],now()->addSecond(20));
-        $user = factory(User::class)->create();
-        $this->actingAs($user);
-        $this->post('/verifyOTP', ['OTP'=>$OTP])->assertStatus(201);
+        //$this->withExceptionHandling();
+        /*$user = factory(User::class)->create();
+        $this->actingAs($user);*/
+        $this->logInUser();
+        $OTP = auth()->user()->cacheTheOTP();
+        $this->post('/verifyOTP', [auth()->user()->OTPKey() =>$OTP])->assertStatus(201);
         $this->assertDatabaseHas('users', ['isVerified' => 1]);
     }
 
@@ -33,3 +33,6 @@ class VerifyOTTest extends TestCase
 
 
 }
+
+/*$OTP = rand(100000, 999999);
+Cache::put(['OTP'=> $OTP],now()->addSecond(20));*/

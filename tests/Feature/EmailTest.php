@@ -22,6 +22,7 @@ class EmailTest extends TestCase
     public function an_otp_mail_is_send_when_user_is_logged_in()
     {
         Mail::fake();
+
         $this->withExceptionHandling();
         $user = factory(User::class)->create();
         $res= $this->post('/login',['email' => $user->email,'password'=>'secret']);
