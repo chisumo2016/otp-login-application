@@ -3,11 +3,13 @@
 namespace Tests\Feature;
 
 use App\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LoginTest extends TestCase
 {
+    use DatabaseMigrations;
     /**
      *
      *
@@ -22,5 +24,22 @@ class LoginTest extends TestCase
         $this->actingAs($user);
 
         $this->get('/home')->assertRedirect('/');
+    }
+
+
+    /**
+     *
+     *
+     *
+     * @test
+     */
+
+    public  function  after_login_user_can_access_home_page_if_verified()
+    {
+        $user =  factory(User::class)->create(['isVerified'=>1]);
+
+        $this->actingAs($user);
+
+        $this->get('/home')->assertStatus(200);
     }
 }
