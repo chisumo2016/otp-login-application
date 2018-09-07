@@ -31,7 +31,7 @@ class UserTest extends TestCase
     {
         $user = factory(User::class)->create();
         Notification::fake();
-       $user->sendOTP('via_sms');
-       Notification::assertSentTo([$user], OTPNotification::class);
+        $user->sendOTP('email');
+        Notification::assertSentTo([$user], OTPNotification::class);
     }
 }

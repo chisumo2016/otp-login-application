@@ -35,7 +35,7 @@ class OTPNotification extends Notification
      */
     public function via($notifiable)
     {
-        return $this->via == 'via_sms' ? [KarixChannel::class] :  ['mail'];
+        return $this->via == 'sms' ? [KarixChannel::class] :  ['mail'];
        //return $this->OTP == 'via_sms' ? [KarixChannel::class] :  ['mail'];
     }
 

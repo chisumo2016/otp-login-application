@@ -47,8 +47,9 @@ class LoginController extends Controller
         );
         if($result)
         {
+            auth()->user()->sendOTP(request('via'));
 
-            auth()->user()->sendOTP(request('otp_via'));
+
             //auth()->user()->sendOTP();
             /*$OTP = rand(100000, 999999);
             Cache::put(['OTP'=>$OTP], now()->addSecond(20));

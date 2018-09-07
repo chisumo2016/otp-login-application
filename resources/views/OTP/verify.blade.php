@@ -61,6 +61,12 @@
                             </div>
                         @endif
 
+                        @if(session()->has('Message'))
+                            <div class="alert-info">
+                                {{ session()->get('Message') }}
+                            </div>
+                        @endif
+
                         <div class="card-body">
                             <form action="/verifyOTP" method="post">
                                 @csrf
@@ -77,16 +83,20 @@
 
 
                         <div class="container mb-4">
-                            <input type="submit" class="btn btn-sm btn-dark mr-4" value="Resent OTP via">
+                            <input type="submit" class="btn btn-sm btn-dark mr-4" value="Resend OTP via">
+
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="via" id="sms" value="sms">
                                 <label class="form-check-label" for="sms">SMS</label>
                             </div>
+
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="via" id="email" value="email" checked>
                                 <label class="form-check-label" for="email">Email</label>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
