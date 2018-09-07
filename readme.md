@@ -1,3 +1,22 @@
+## 2FA OTP LARAVEL APPPLICATION
+<p align="center">2FA OTP LARAVEL APPPLICATION</p>
+        -Set Application
+        -Start Test Driven Development
+        -Write Test For Email Sending
+        -Sending OTP Now
+        -Test Verify OTP
+        -Refactor the Code
+        -Working On FrontEnd
+        -Handle Invalid OTP Part 1
+        -Handle Invalid OTP Part 2
+        -Check OTP via SMS
+        -Send SMS in Laravel Karix.IO
+        -Sending SMS with Real OTP Part 1
+        -Sending SMS with Real OTP Part 2
+        -Resend OT 
+        
+        
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
