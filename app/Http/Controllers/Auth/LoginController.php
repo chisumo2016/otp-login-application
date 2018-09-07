@@ -41,13 +41,15 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-
+       //dd(request('otp_via'));
         $result =  $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
         if($result)
         {
-            auth()->user()->sendOTP();
+
+            auth()->user()->sendOTP(request('otp_via'));
+            //auth()->user()->sendOTP();
             /*$OTP = rand(100000, 999999);
             Cache::put(['OTP'=>$OTP], now()->addSecond(20));
             Mail::to('bchisumo74@gmail.com')->send(new OTPMail($OTP));*/

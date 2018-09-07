@@ -52,9 +52,14 @@ class User extends Authenticatable
         return $OTP;
     }
 
-    public function  sendOTP()
+    public function  sendOTP($via)
     {
-        Mail::to('bchisumo74@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
+        if($via == 'via_sms')
+        {
+            
+        }else{
+            Mail::to('bchisumo74@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
+        }
 
         //$this->cacheTheOTP();
         //Mail::to('bchisumo74@gmail.com')->send(new OTPMail($this->OTP()));
