@@ -25,14 +25,25 @@ class VerifyOTTest extends TestCase
         $this->actingAs($user);*/
         $this->logInUser();
         $OTP = auth()->user()->cacheTheOTP();
-        $this->post('/verifyOTP', [auth()->user()->OTPKey() =>$OTP])->assertStatus(201);
+        $this->post('/verifyOTP', [auth()->user()->OTPKey() =>$OTP])->assertStatus(302);
         $this->assertDatabaseHas('users', ['isVerified' => 1]);
     }
 
+    /*
+    *
+    *@test
+     */
 
-
-
+    public function  user_can_see_opt_verify_page()
+    {
+        $this->logInUser();
+        $this->get('/verifyOTP')
+            ->assertStatus(200)
+            ->assertSee('Enter OTP');
+    }
 }
+
+
 
 /*$OTP = rand(100000, 999999);
 Cache::put(['OTP'=> $OTP],now()->addSecond(20));*/
