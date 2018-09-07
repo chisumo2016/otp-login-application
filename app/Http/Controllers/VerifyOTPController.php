@@ -19,7 +19,9 @@ class VerifyOTPController extends Controller
             return redirect('/home');
            // return response(null, 201);
         }
+
         return back()->withErrors('OTP is expired or invalid');
+       // return back();
 
     }
 
