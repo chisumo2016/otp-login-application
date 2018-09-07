@@ -4,6 +4,7 @@ namespace App;
 
 
 use App\Mail\OTPMail;
+use App\Notifications\OTPNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,12 +57,17 @@ class User extends Authenticatable
     {
         if($via == 'via_sms')
         {
-            
+           $this->notify(new OTPNotification());
         }else{
             Mail::to('bchisumo74@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
         }
 
         //$this->cacheTheOTP();
         //Mail::to('bchisumo74@gmail.com')->send(new OTPMail($this->OTP()));
+    }
+
+    public function routeNotificationForKarix()
+    {
+        return $this->email;
     }
 }
