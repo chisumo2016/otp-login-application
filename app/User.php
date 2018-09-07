@@ -71,6 +71,6 @@ class User extends Authenticatable
 
     public function routeNotificationForKarix()
     {
-        return $this->email;
+        return $this->phone;
     }
 }
